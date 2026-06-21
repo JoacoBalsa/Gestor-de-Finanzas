@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Finanzas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4 shadow-sm">
+        <div class="container-fluid px-4 px-xl-5">
+            <a class="navbar-brand font-weight-bold" href="#">Gestor de Finanzas<span class="brand-dot">.</span></a>
+            <div class="ms-auto text-muted small">
+                Cotización USD/UYU: <span id="cotizacion-usd" class="fw-bold text-dark">...</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 px-xl-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="section-title">Mis Cuentas</h4>
+            <button class="btn btn-custom-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCuenta"
+                id="btn-nueva-cuenta">
+                + Nueva Cuenta
+            </button>
+        </div>
+
+        <div class="row mb-4" id="contenedor-cuentas">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card card-custom p-4 shadow-sm">
+                    <h5 class="card-title-custom mb-3">Registrar Movimiento</h5>
+                    <form id="form-movimiento">
+                        <div class="mb-3">
+                            <label for="tipo-movimiento" class="form-label-custom">Tipo de Movimiento</label>
+                            <select class="form-select form-select-custom" id="tipo-movimiento" required>
+                                <option value="ingreso">Ingreso (+)</option>
+                                <option value="egreso">Egreso (-)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cuenta-origen" class="form-label-custom">Cuenta</label>
+                            <select class="form-select form-select-custom" id="cuenta-origen" required>
+                                <option value="" disabled selected hidden>Seleccione cuenta...</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label-custom">Categoría</label>
+                            <select class="form-select form-select-custom" id="categoria" required>
+                                <option value="" disabled selected hidden>Seleccione categoría...</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="monto" class="form-label-custom">Monto</label>
+                            <input type="text" class="form-control form-control-custom" id="monto" placeholder="0.00"
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn btn-custom-primary w-100 mt-2">Confirmar Transacción</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-9 mb-4">
+                <div class="card card-custom p-4 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="card-title-custom mb-0">Historial de Actividad</h5>
+                    </div>
+
+                    <div class="filter-panel mb-4 p-4 shadow-sm">
+                        <div class="row g-4 align-items-end">
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <label class="form-label-custom" for="filtro-tipo">Tipo</label>
+                                <select class="form-select form-select-custom" id="filtro-tipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="ingreso">Ingresos (+)</option>
+                                    <option value="egreso">Egresos (-)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label class="form-label-custom" for="filtro-cuenta">Cuenta</label>
+                                <select class="form-select form-select-custom" id="filtro-cuenta">
+                                    <option value="todas">Todas las cuentas</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-sm-12">
+                                <label class="form-label-custom" for="filtro-categoria">Categoría</label>
+                                <select class="form-select form-select-custom" id="filtro-categoria">
+                                    <option value="todas">Todas las categorías</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12">
+                                <label class="form-label-custom">Período (Desde - Hasta)</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-custom" id="filtro-fecha-desde"
+                                        placeholder="dd/mm/yyyy">
+                                    <span class="input-group-text px-3"
+                                        style="background-color: var(--bg-main); border-color: var(--border-warm); color: var(--text-muted); font-weight: 600;">a</span>
+                                    <input type="text" class="form-control form-control-custom" id="filtro-fecha-hasta"
+                                        placeholder="dd/mm/yyyy">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-custom align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Cuenta</th>
+                                    <th>Categoría</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-movimientos">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCuenta" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="modalCuentaLabel">Gestionar Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-cuenta">
+                        <input type="hidden" id="cuenta-id">
+
+                        <div class="mb-3">
+                            <label for="nombre-cuenta" class="form-label-custom">Nombre de la Cuenta</label>
+                            <input type="text" class="form-control form-control-custom" id="nombre-cuenta"
+                                placeholder="Ej: Itaú Sueldo, Efectivo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="moneda-cuenta" class="form-label-custom">Divisa</label>
+                            <select class="form-select form-select-custom" id="moneda-cuenta" required>
+                                <option value="UYU">Pesos Uruguayos ($ UYU)</option>
+                                <option value="USD">Dólares (U$S USD)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="saldo-inicial" class="form-label-custom">Saldo Inicial</label>
+                            <input type="text" class="form-control form-control-custom" id="saldo-inicial"
+                                placeholder="0.00" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom-primary w-100" id="btn-guardar-cuenta">Guardar
+                            Cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/clases.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

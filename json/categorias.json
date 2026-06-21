@@ -1,0 +1,72 @@
+[
+    {
+        "id": "ing_ajuste",
+        "nombre": "Ajuste de Saldo (+)",
+        "tipo": "ingreso"
+    },
+    {
+        "id": "ing_sueldo",
+        "nombre": "Sueldo / Honorarios",
+        "tipo": "ingreso"
+    },
+    {
+        "id": "ing_ventas",
+        "nombre": "Ventas / Negocio",
+        "tipo": "ingreso"
+    },
+    {
+        "id": "ing_inversiones",
+        "nombre": "Rendimiento Inversiones",
+        "tipo": "ingreso"
+    },
+    {
+        "id": "ing_otros",
+        "nombre": "Otros Ingresos",
+        "tipo": "ingreso"
+    },
+    {
+        "id": "egr_ajuste",
+        "nombre": "Ajuste de Saldo (-)",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_comida",
+        "nombre": "Comida / Supermercado",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_entretenimiento",
+        "nombre": "Entretenimiento / Ocio",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_vivienda",
+        "nombre": "Vivienda / Alquiler",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_transporte",
+        "nombre": "Transporte / Combustible",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_servicios",
+        "nombre": "Servicios (Luz, Agua, Internet)",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_salud",
+        "nombre": "Salud / Farmacia",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_ropa",
+        "nombre": "Ropa / Calzado",
+        "tipo": "egreso"
+    },
+    {
+        "id": "egr_otros",
+        "nombre": "Otros Gastos",
+        "tipo": "egreso"
+    }
+]

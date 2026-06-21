@@ -1,0 +1,208 @@
+:root {
+    --bg-main: #e6e2dd;      
+    --bg-card: #fdfcfb;          
+    --text-primary: #29211d;     
+    --text-muted: #857873;
+    --accent-primary: #5d4037;  
+    --accent-primary-hover: #3e2723;
+    --color-success: #388e3c;    
+    --color-danger: #d32f2f;    
+    --border-radius: 12px;
+    --font-main: 'Inter', sans-serif;
+    --border-warm: #d7ccc8;     
+    --bg-hover-warm: #efebe6;    
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+.navbar-custom {
+    background-color: var(--bg-card);
+    border-bottom: 3px solid var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(41, 33, 29, 0.05);
+}
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+.navbar-custom .brand-dot {
+    color: var(--accent-primary);
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+}
+
+.card-custom {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgba(93, 64, 55, 0.05), 0 2px 4px -1px rgba(93, 64, 55, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-title-custom {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.account-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(93, 64, 55, 0.04);
+}
+.account-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+.account-card.uyu::before { background-color: var(--accent-primary); }
+.account-card.usd::before { background-color: var(--color-success); }
+
+.account-card .acc-name {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.account-card .acc-balance {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-top: 0.25rem;
+}
+
+.btn-delete-account {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.btn-delete-account:hover {
+    background-color: var(--bg-hover-warm);
+    color: var(--accent-primary);
+}
+
+.form-label-custom {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+.form-control-custom, .form-select-custom {
+    border: 1px solid var(--border-warm);
+    border-radius: 8px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.9rem;
+    background-color: #fff;
+    color: var(--text-primary);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-control-custom:focus, .form-select-custom:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.15);
+    outline: 0;
+}
+
+.btn-custom-primary {
+    background-color: var(--accent-primary);
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: none;
+    transition: background-color 0.2s;
+}
+.btn-custom-primary:hover {
+    background-color: var(--accent-primary-hover);
+    color: #fff;
+}
+
+.btn-custom-secondary {
+    background-color: var(--bg-main);
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-warm);
+    transition: all 0.2s ease;
+}
+.btn-custom-secondary:hover {
+    background-color: var(--border-warm);
+    color: var(--accent-primary-hover);
+}
+
+.table-custom {
+    font-size: 0.9rem;
+}
+.table-custom thead th {
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border-warm);
+    padding-bottom: 0.75rem;
+}
+.table-custom tbody tr {
+    border-bottom: 1px solid var(--bg-hover-warm);
+    transition: background-color 0.2s;
+}
+.table-custom tbody tr:hover {
+    background-color: var(--bg-hover-warm); 
+}
+.table-custom tbody tr:last-child {
+    border-bottom: none;
+}
+
+.text-income {
+    color: var(--color-success);
+    font-weight: 600;
+}
+.text-expense {
+    color: var(--color-danger);
+    font-weight: 600;
+}
+
+.modal-content-custom {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-warm);
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(41, 33, 29, 0.1);
+}
+
+.filter-panel {
+    background-color: var(--bg-hover-warm);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--border-radius);
+}
+
+.filter-panel .form-label-custom {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
